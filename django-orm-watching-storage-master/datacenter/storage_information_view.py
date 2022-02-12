@@ -1,6 +1,13 @@
-from datacenter.models import Passcard
+import datetime
 from datacenter.models import Visit
 from django.shortcuts import render
+
+def get_duration(duration, hour=datetime.timedelta(hours=1)):
+
+    if duration > hour:
+        return True
+    else:
+        return False
 
 
 def storage_information_view(request):
@@ -10,11 +17,13 @@ def storage_information_view(request):
 
     for visit in visits:
 
+        duration = visit.get_duration()
         non_closed_visits.append(
             {
                 'who_entered': visit.passcard.owner_name,
                 'entered_at': visit.entered_at,
-                'duration': visit.get_duration(),
+                'duration': duration,
+                'is_strange': get_duration(duration)
             }
         )
     context = {
