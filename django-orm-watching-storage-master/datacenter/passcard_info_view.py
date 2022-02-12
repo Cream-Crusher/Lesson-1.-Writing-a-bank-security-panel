@@ -33,22 +33,21 @@ def passcard_info_view(request, passcode):
 
         passcard_visits = visits.filter(passcard=owner_name)
 
-    for visit in passcard_visits:
-        duration = visit.get_duration()
-        entered_at = visit.entered_at
-        owner_name = visits.filter(passcard=passcard[1])
+        for visit in passcard_visits:
+            duration = visit.get_duration()
+            entered_at = visit.entered_at
 
-        this_passcard_visits.append(
-            {
-                'entered_at': entered_at,
-                'duration': duration,
-                'is_strange': get_duration(duration)
-            },
-        )
+            this_passcard_visits.append(
+                {
+                    'entered_at': entered_at,
+                    'duration': duration,
+                    'is_strange': get_duration(duration)
+                },
+            )
 
-    context = {
-    'passcard': owner_name,
-    'this_passcard_visits': this_passcard_visits
-        }
+        context = {
+        'passcard': owner_name,
+        'this_passcard_visits': this_passcard_visits
+            }
 
-    return render(request, 'passcard_info.html', context)
+        return render(request, 'passcard_info.html', context)
