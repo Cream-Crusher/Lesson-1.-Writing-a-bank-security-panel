@@ -1,3 +1,4 @@
+import django
 from django.db import models
 
 
@@ -28,3 +29,5 @@ class Visit(models.Model):
                 if self.leaved_at else 'not leaved'
             )
         )
+    def get_duration(self):
+        return (django.utils.timezone.localtime(self.leaved_at) - django.utils.timezone.localtime(self.entered_at))
