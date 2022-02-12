@@ -5,6 +5,8 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 django.setup()
 
+
+
 from datacenter.models import Passcard, Visit  # noqa: E402
 
 if __name__ == '__main__':
@@ -30,4 +32,29 @@ if __name__ == '__main__':
         located_in = django.utils.timezone.localtime().replace(microsecond=0) -entered_at
         passcard = unclosed_visits[num].passcard
 
-        print('{}\nЗашёл в хранилище, время по Москве: {}\nНаходится в хранилище: {}'.format(passcard, entered_at, located_in))
+        #print('{}\nЗашёл в хранилище, время по Москве: {}\nНаходится в хранилище: {}'.format(passcard, entered_at, located_in))
+
+
+    passcard_visit = Visits.filter(passcard=unclosed_visits[1].passcard)
+    #print(passcard_visit)
+
+
+def get_duration(leaved_at, entered_at, hour=datetime.timedelta(hours=1)):
+
+    duration_visit = (leaved_at - entered_at)
+
+    if duration_visit > hour:
+        return True
+    else:
+        return False
+
+
+if __name__ == '__main__':
+    visits = Visit.objects.all()
+
+    for visit in visits:
+        entered_at = visit.entered_at
+        leaved_at = visit.leaved_at
+
+        if entered_at != None:
+            get_duration(leaved_at, entered_at)
