@@ -3,7 +3,8 @@ from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 
-def get_duration(duration, hour=datetime.timedelta(hours=1)):
+
+def check_duration(duration, hour=datetime.timedelta(hours=1)):
 
     if duration > hour:
         return True
@@ -12,23 +13,23 @@ def get_duration(duration, hour=datetime.timedelta(hours=1)):
 
 
 def passcard_info_view(request, passcode):
-    passcard = Passcard.objects.all()
+    owner_names = Passcard.objects.all()
 
-    for owner_name in passcard:
-
-        passcard_visits = Visit.objects.filter(passcard=owner_name)
+    for owner_name in owner_names:
+        
+        passcards_information = Visit.objects.filter(passcard=owner_name)
         this_passcard_visits = []
 
-        for visit in passcard_visits:
+        for passcard_information in passcards_information:
 
-            duration = visit.get_duration()
-            entered_at = visit.entered_at
+            duration = passcard_information.get_duration()
+            entered_at = passcard_information.entered_at
 
             this_passcard_visits.append(
                 {
                     'entered_at': entered_at,
                     'duration': duration,
-                    'is_strange': get_duration(duration)
+                    'is_strange': check_duration(duration)
                 },
             )
 
