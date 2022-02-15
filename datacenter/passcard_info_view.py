@@ -13,29 +13,26 @@ def check_duration(duration, hour=datetime.timedelta(hours=1)):
 
 
 def passcard_info_view(request, passcode):
-    owner_names = Passcard.objects.all()
+    passcard = Passcard.objects.get(passcode=passcode)
+    visits = Visit.objects.filter(passcard=passcard)
+    this_passcard_visits = []
 
-    for owner_name in owner_names:
-        
-        passcards_information = Visit.objects.filter(passcard=owner_name)
-        this_passcard_visits = []
+    for visit in visits:
 
-        for passcard_information in passcards_information:
+        duration = visit.get_duration()
+        entered_at = visit.entered_at
 
-            duration = passcard_information.get_duration()
-            entered_at = passcard_information.entered_at
+        this_passcard_visits.append(
+            {
+                'entered_at': entered_at,
+                'duration': duration,
+                'is_strange': check_duration(duration)
+            },
+        )
 
-            this_passcard_visits.append(
-                {
-                    'entered_at': entered_at,
-                    'duration': duration,
-                    'is_strange': check_duration(duration)
-                },
-            )
-
-        context = {
-        'passcard': owner_name,
-        'this_passcard_visits': this_passcard_visits
-            }
+    context = {
+    'passcard': passcard,
+    'this_passcard_visits': this_passcard_visits
+        }
 
     return render(request, 'passcard_info.html', context)
