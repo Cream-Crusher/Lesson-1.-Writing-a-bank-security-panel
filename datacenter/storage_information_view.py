@@ -5,10 +5,7 @@ from django.shortcuts import render
 
 def check_duration(duration, hour=datetime.timedelta(hours=1)):
 
-    if duration > hour:
-        return True
-    else:
-        return False
+    return duration > hour
 
 
 def storage_information_view(request):
