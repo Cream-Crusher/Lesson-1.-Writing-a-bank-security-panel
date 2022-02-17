@@ -1,4 +1,5 @@
 import django
+import datetime
 from django.db import models
 
 
@@ -30,4 +31,10 @@ class Visit(models.Model):
             )
         )
     def get_duration(self):
+
         return (django.utils.timezone.localtime(self.leaved_at) - django.utils.timezone.localtime(self.entered_at))
+
+
+    def check_duration(self, hour=datetime.timedelta(hours=1)):
+
+        return  (django.utils.timezone.localtime(self.leaved_at) - django.utils.timezone.localtime(self.entered_at)) > hour

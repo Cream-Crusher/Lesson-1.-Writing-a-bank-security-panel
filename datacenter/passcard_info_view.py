@@ -1,12 +1,6 @@
-import datetime
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
-
-
-def check_duration(duration, hour=datetime.timedelta(hours=1)):
-
-    return duration > hour
 
 
 def passcard_info_view(request, passcode):
@@ -18,12 +12,13 @@ def passcard_info_view(request, passcode):
 
         duration = visit.get_duration()
         entered_at = visit.entered_at
+        is_strange = visit.check_duration()
 
         this_passcard_visits.append(
             {
                 'entered_at': entered_at,
                 'duration': duration,
-                'is_strange': check_duration(duration)
+                'is_strange': is_strange
             },
         )
 
