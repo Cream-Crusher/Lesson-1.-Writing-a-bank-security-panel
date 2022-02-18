@@ -61,4 +61,4 @@ $ python chrome http://127.0.0.1:8000/
 
 # Project Goals
 
-Training ...(models.Model)
+Training
