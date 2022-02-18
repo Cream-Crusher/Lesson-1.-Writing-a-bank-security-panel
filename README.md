@@ -15,7 +15,7 @@ pip install -r requirements.txt
 example:
 
 ```
-$ python main.py
+$ python python manage.py runserver 0.0.0.0:8000
 ```
 
 
@@ -32,7 +32,7 @@ System check identified no issues (0 silenced).
 ### website launch
 
 ```
-$ start chrome http://127.0.0.1:8000/
+$ python chrome http://127.0.0.1:8000/
 ```
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
