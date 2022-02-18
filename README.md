@@ -15,6 +15,9 @@ and
 create file 'project/.env'
 
 File type '.env':
+
+Note: The data can be obtained from the administration of the bank "Сияние"
+
 ```
 SECRET_KEY=your: SECRET_KEY (optional)
 HOST=your: HOST
@@ -30,6 +33,7 @@ ALLOWED_HOSTS='*'
 True-debugging will turn on
 
 False-debugging will turn off
+
 
 
 ### Run
