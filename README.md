@@ -10,6 +10,28 @@ Use pip to install dependencies:
 pip install -r requirements.txt
 ```
 
+and
+
+create file 'project/.env'
+
+File type '.env':
+```
+SECRET_KEY=your: SECRET_KEY (optional)
+HOST=your: HOST
+PORT=your: PORT
+NAME=your: NAME
+USER=your: USER
+PASSWORD=your: PASSWORD
+DEBUG='True' or 'False'
+ALLOWED_HOSTS='*'
+```
+
+##### Arguments DEBUG:
+True-debugging will turn on
+
+False-debugging will turn off
+
+
 ### Run
 
 example:
