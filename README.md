@@ -10,12 +10,38 @@ Use pip to install dependencies:
 pip install -r requirements.txt
 ```
 
+and
+
+create file 'project/.env'
+
+File type '.env':
+
+Note: The data can be obtained from the administration of the bank "Сияние"
+
+```
+SECRET_KEY=your: SECRET_KEY (optional)
+HOST=your: HOST
+PORT=your: PORT
+NAME=your: NAME
+USER=your: USER
+PASSWORD=your: PASSWORD
+DEBUG='True' or 'False'
+ALLOWED_HOSTS='*'
+```
+
+##### Arguments DEBUG:
+True-debugging will turn on
+
+False-debugging will turn off
+
+
+
 ### Run
 
 example:
 
 ```
-$ python main.py
+$ python manage.py runserver 0.0.0.0:8000
 ```
 
 
@@ -32,11 +58,11 @@ System check identified no issues (0 silenced).
 ### website launch
 
 ```
-$ start chrome http://127.0.0.1:8000/
+$ python chrome http://127.0.0.1:8000/
 ```
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 
 # Project Goals
 
-Training ...(models.Model)
+Training
