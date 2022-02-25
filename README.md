@@ -19,14 +19,10 @@ File type '.env':
 Note: The data can be obtained from the administration of the bank "Сияние"
 
 ```
-SECRET_KEY=your: SECRET_KEY (optional)
-HOST=your: HOST
-PORT=your: PORT
-NAME=your: NAME
-USER=your: USER
-PASSWORD=your: PASSWORD
-DEBUG='True' or 'False'
-ALLOWED_HOSTS='*'
+SECRET_KEY=REPLACE_ME
+DEBUG=False
+ALLOWED_HOSTS=['*']
+DB_URL=postgres://login:password@host:port/name
 ```
 
 ##### Arguments DEBUG:
