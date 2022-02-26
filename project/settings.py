@@ -5,12 +5,8 @@ load_dotenv()
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'default': dj_database_url.config(default = os.getenv('DB_URL'))
     }
-}
-
-DATABASES['default'] = dj_database_url.config(default = os.getenv('DB_URL'))
 
 INSTALLED_APPS = ['datacenter']
 
@@ -20,7 +16,7 @@ DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 't')
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+ALLOWED_HOSTS = list(os.getenv('ALLOWED_HOSTS'))
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
