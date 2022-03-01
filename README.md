@@ -21,7 +21,7 @@ Note: The data can be obtained from the administration of the bank "Сияние
 ```
 SECRET_KEY=REPLACE_ME
 DEBUG=False
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS=*
 DB_URL=postgres://login:password@host:port/name
 ```
 
